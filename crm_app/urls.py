@@ -2,6 +2,8 @@ from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 from crm_app import views
 from crm_app import forms
+from django.views.generic.base import RedirectView
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 urlpatterns = [
     url(r'^\Z', auth_views.LoginView.as_view(
@@ -10,4 +12,10 @@ urlpatterns = [
         ), name='signup'),
     url(r'^clients/$', views.Clients.as_view(), name="clients"),
     url(r'^add_client/$', views.AddClient.as_view(), name="add_client"),
+    url(r'^favicon.ico$',
+        RedirectView.as_view(
+            url=staticfiles_storage.url('assets/img/favicon.ico'),
+        ),
+        name="favicon"
+    ),
 ]
