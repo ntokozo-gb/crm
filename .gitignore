@@ -1,0 +1,36 @@
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Packaging
+.Python
+env/
+
+.env
+
+# JetBrains
+.idea/dictionaries
+.idea/crm.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
