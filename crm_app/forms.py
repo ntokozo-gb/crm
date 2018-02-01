@@ -13,7 +13,7 @@ class LoginForm(AuthenticationForm):
     helper.form_class = "form-login"
     helper.form_show_labels = False
     helper.layout = Layout(
-        HTML('<h2 class="form-login-heading">login in now</h2>'),
+        HTML('<h2 class="form-login-heading">login</h2>'),
         Div(
             Field(
                 'username',
@@ -33,4 +33,3 @@ class LoginForm(AuthenticationForm):
             css_class='login-wrap'
         ),
     )
-
