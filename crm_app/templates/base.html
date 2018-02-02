@@ -65,8 +65,14 @@
               <h5 class="centered">Admin: {{user.username}}</h5>
               <li class="mt">
                   <a href="{% url 'clients' %}">
-                      <i class="fa fa-child"></i>
+                      <i class="fa fa-users"></i>
                       <span>Clients</span>
+                  </a>
+              </li>
+              <li class="mt">
+                  <a href="{% url 'projects' %}">
+                      <i class="fa fa-tasks"></i>
+                      <span>Projects</span>
                   </a>
               </li>
           </ul>
