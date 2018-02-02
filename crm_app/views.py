@@ -35,16 +35,15 @@ class AddClient(LoginRequiredMixin, View):
         name = data['name']
         contact_person = data['contact_person']
         contact_number = data['contact_number']
-        projects = data['projects']
-
+        projects = 'project one'
         models.Client.objects.create(
-            name = client_name,
+            name = name,
             contact_person = contact_person,
             contact_number = contact_number,
             projects = projects
         )
-
         return redirect(reverse('clients'))
+
 
 class Projects(LoginRequiredMixin, View):
     template_name = 'projects.html'
@@ -55,5 +54,22 @@ class Projects(LoginRequiredMixin, View):
         context = {
             'projects': projects,
         }
-
         return render(request, self.template_name, context)
+
+
+class AddProject(LoginRequiredMixin, View):
+    template_name = 'projects.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
+
+    def post(self, request, *args, **kwargs):
+        data = request.POST
+        project_name = data['name']
+        project_status = data['status']
+        models.Project.objects.create(
+            name = project_name,
+            status = project_status
+        )
+        return redirect(reverse('projects'))

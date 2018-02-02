@@ -11,21 +11,22 @@
           Projects
         </h4>
           <div style="font-size:2em; color:Tomato; margin-top: -7px;" class="pull-right">
-              <a data-toggle="modal" href="clients#myModal1">
+              <a data-toggle="modal" href="projects#projectModal">
                 <i class="fa fa-plus"></i>
               </a>
           </div>
            <!-- Modal -->
-          <div id="myModal1"
+          <div id="projectModal"
                aria-hidden="true"
-               aria-labelledby="myModalLabel1"
+               aria-labelledby="projectModalLabel"
                role="dialog"
                tabindex="-1"
                class="modal fade">
             <div class="modal-dialog">
             <form>
               <div class="modal-content">
-                <div class="modal-header" style="background: #3f51b5">
+                <div class="modal-header"
+                     style="background: #3f51b5">
                   <button type="button"
                           class="close"
                           data-dismiss="modal"
@@ -36,21 +37,15 @@
                 </div>
                 <div class="modal-body">
                   <p>Please enter the details of the new project below:</p>
-                  <input id="client_name1"
+                  <input id="project_name"
                          type="text"
-                         placeholder="Client name"
+                         placeholder="Project name"
                          autocomplete="off"
                          class="form-control placeholder-no-fix">
                   <br>
-                  <input id="contact_person1"
+                  <input id="project_status"
                          type="text"
-                         placeholder="Contact Person"
-                         autocomplete="off"
-                         class="form-control placeholder-no-fix">
-                  <br>
-                  <input id="contact_number1"
-                         type="text"
-                         placeholder="Contact Number"
+                         placeholder="Project status"
                          autocomplete="off"
                          class="form-control placeholder-no-fix">
                 </div>
@@ -60,7 +55,7 @@
                           type="button">
                         Cancel
                   </button>
-                  <button id="btn-add-client1"
+                  <button id="btn-add-project"
                           data-dismiss="modal"
                           class="btn btn-theme"
                           type="button">
@@ -83,8 +78,8 @@
           <tbody>
             {% for project in projects %}
           <tr>
-            <td><a href="">{{ project.proj_name }}</a></td>
-            <td><span class="label label-info label-mini">Due</span></td>
+            <td>{{ project.name }}</a></td>
+            <td>{{ project.status }}</td>
             <td>
               <button class="btn btn-primary btn-xs">
                 <i class="fa fa-pencil"></i>
