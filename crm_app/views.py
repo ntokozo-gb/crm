@@ -11,7 +11,7 @@ from . import models
 
 
 class Clients(LoginRequiredMixin, View):
-    template_name = 'index.html'
+    template_name = 'clients.html'
 
     def get(self, request, *args, **kwargs):
         clients = models.Client.objects.all()
@@ -26,7 +26,7 @@ class Clients(LoginRequiredMixin, View):
 
 
 class AddClient(LoginRequiredMixin, View):
-    template_name = 'index.html'
+    template_name = 'clients.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
