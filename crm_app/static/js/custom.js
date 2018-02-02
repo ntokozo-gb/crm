@@ -3,10 +3,12 @@ $('document').ready(function(){
         var name = $('#client_name').val();
         var person = $('#contact_person').val();
         var number = $('#contact_number').val();
+        var projects = $('#client_projects').val();
         var data = {
             'name': name,
             'contact_person': person,
             'contact_number': number,
+            'projects': projects,
             'csrfmiddlewaretoken': getCookie('csrftoken'),
         };
 

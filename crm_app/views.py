@@ -15,9 +15,11 @@ class Clients(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         clients = models.Client.objects.all()
+        projects = models.Project.objects.all()
 
         context = {
             'clients': clients,
+            'projects': projects,
         }
 
         return render(request, self.template_name, context)
