@@ -32,9 +32,12 @@
             <td>{{ project.status }}</td>
             <td>{{ project.assigned_to.name }}</td>
             <td>
-              <button class="btn btn-primary btn-xs">
+              {% include 'dialogs/edit_project.html' %}
+              <a data-toggle="modal"
+                 href="projects#editProjectModal"
+                 class="btn btn-primary btn-xs">
                 <i class="fa fa-pencil"></i>
-              </button>
+              </a>
               <button class="btn btn-danger btn-xs">
                 <i class="fa fa-trash-o "></i>
               </button>
