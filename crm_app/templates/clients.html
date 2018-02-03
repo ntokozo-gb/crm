@@ -48,15 +48,6 @@
                            placeholder="Contact Number"
                            autocomplete="off"
                            class="form-control placeholder-no-fix">
-                    <br>
-                    <div class="form-group">
-                      <label for="client_projects">Assign projects to client (hold shift to select more than one):</label>
-                      <select multiple class="form-control" id="client_projects">
-                        {% for project in projects %}
-                        <option>{{ project.name }}</option>
-                        {% endfor %}
-                      </select>
-                    </div>
                   </div>
                   <div class="modal-footer">
                       <button data-dismiss="modal"
@@ -82,7 +73,6 @@
             <th><i class="fa fa-edit"></i> Client Name</th>
             <th class="hidden-phone"><i class="fa fa-user"></i> Contact Person</th>
             <th><i class="fa fa-phone"></i> Contact Number</th>
-            <th><i class="fa fa-phone"></i> Projects</th>
             <th></th>
           </tr>
           </thead>

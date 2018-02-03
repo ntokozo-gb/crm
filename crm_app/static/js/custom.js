@@ -3,12 +3,10 @@ $('document').ready(function(){
         var name = $('#client_name').val();
         var person = $('#contact_person').val();
         var number = $('#contact_number').val();
-        var projects = $('#client_projects').val();
         var data = {
             'name': name,
             'contact_person': person,
             'contact_number': number,
-            'projects': projects,
             'csrfmiddlewaretoken': getCookie('csrftoken'),
         };
 
@@ -26,9 +24,11 @@ $('document').ready(function(){
     $('#btn-add-project').click(function() {
         var name = $('#project_name').val();
         var status = $('#project_status').val();
+        var assigned_to = $('#assigned_to').val();
         var data = {
             'name': name,
             'status': status,
+            'assigned_to': assigned_to,
             'csrfmiddlewaretoken': getCookie('csrftoken'),
         };
 

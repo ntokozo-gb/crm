@@ -37,13 +37,13 @@ class AddClient(LoginRequiredMixin, View):
         name = data['name']
         contact_person = data['contact_person']
         contact_number = data['contact_number']
-        projects = 'project one'
+
         models.Client.objects.create(
             name = name,
             contact_person = contact_person,
             contact_number = contact_number,
-            projects = projects
         )
+
         return redirect(reverse('clients'))
 
 
