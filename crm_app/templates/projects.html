@@ -51,6 +51,15 @@
                      <option>Complete</option>
                    </select>
                   </div>
+                  <br>
+                  <div class="form-group">
+                  <label for="sel1">Assign to:</label>
+                   <select class="form-control" id="clients">
+                     {% for client in clients %}
+                       <option>{{client}}</option>
+                     {% endfor %}
+                   </select>
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button data-dismiss="modal"
@@ -73,16 +82,18 @@
           <hr>
           <thead>
             <tr>
-              <th><i class="fa fa-edit"></i> Project Name</th>
-              <th><i class=" fa fa-edit"></i> Status</th>
+              <th><i class="fa fa-tasks"></i> Project Name</th>
+              <th><i class=" fa fa-flag"></i> Status</th>
+              <th><i class="fa fa-user"></i> Assigned To</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {% for project in projects %}
+          {% for project in projects %}
           <tr>
             <td>{{ project.name }}</a></td>
             <td>{{ project.status }}</td>
+            <td>{{ project.assigned_to }}</td>
             <td>
               <button class="btn btn-primary btn-xs">
                 <i class="fa fa-pencil"></i>

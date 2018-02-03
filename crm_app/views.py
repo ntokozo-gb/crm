@@ -15,11 +15,9 @@ class Clients(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         clients = models.Client.objects.all()
-        projects = models.Project.objects.all()
 
         context = {
             'clients': clients,
-            'projects': projects,
         }
 
         return render(request, self.template_name, context)
@@ -52,9 +50,11 @@ class Projects(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         projects = models.Project.objects.all()
+        clients = models.Client.objects.all()
 
         context = {
             'projects': projects,
+            'clients': clients,
         }
         return render(request, self.template_name, context)
 
@@ -70,8 +70,12 @@ class AddProject(LoginRequiredMixin, View):
         data = request.POST
         project_name = data['name']
         project_status = data['status']
+        assigned_to = data['assigned_to']
+
         models.Project.objects.create(
             name = project_name,
-            status = project_status
+            status = project_status,
+            assigned_to = assigned_to
         )
+
         return redirect(reverse('projects'))
