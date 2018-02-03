@@ -10,63 +10,7 @@
           <div style="font-size:2em; color:Tomato; margin-top: -7px;" class="pull-right">
             <a data-toggle="modal" href="clients#clientModal"> <i class="fa fa-plus"></i></a>
           </div>
-          <!-- Modal -->
-		      <div id="clientModal"
-               aria-hidden="true"
-               aria-labelledby="clientModalLabel"
-               role="dialog"
-               tabindex="-1"
-               class="modal fade">
-		        <div class="modal-dialog">
-              <form>
-		            <div class="modal-content">
-                  <div class="modal-header" style="background: #3f51b5">
-                    <button type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-hidden="true">
-                          &times;
-                    </button>
-                    <h4 class="modal-title">Add new client</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>Please enter the details of the new client below:</p>
-                    <input id="client_name"
-                           type="text"
-                           placeholder="Client name"
-                           autocomplete="off"
-                           class="form-control placeholder-no-fix">
-                    <br>
-                    <input id="contact_person"
-                           type="text"
-                           placeholder="Contact Person"
-                           autocomplete="off"
-                           class="form-control placeholder-no-fix">
-                    <br>
-                    <input id="contact_number"
-                           type="text"
-                           placeholder="Contact Number"
-                           autocomplete="off"
-                           class="form-control placeholder-no-fix">
-                  </div>
-                  <div class="modal-footer">
-                      <button data-dismiss="modal"
-                              class="btn btn-default"
-                              type="button">
-                            Cancel
-                      </button>
-                      <button id="btn-add-client"
-                              data-dismiss="modal"
-                              class="btn btn-theme"
-                              type="button">
-                            Submit
-                      </button>
-                  </div>
-                </div>
-              </form>
-		        </div>
-	        </div>
-          <!-- modal -->
+          {% include 'dialogs/add_client.html' %}
           <hr>
           <thead>
           <tr>
@@ -84,7 +28,8 @@
               <td>{{ client.contact_number }}</td>
               <td>{{ client.projects }}</td>
               <td>
-                <button class="btn btn-primary btn-xs">
+                <button id="btn-edit-client"
+                        class="btn btn-primary btn-xs">
                   <i class="fa fa-pencil"></i>
                 </button>
                 <button class="btn btn-danger btn-xs">

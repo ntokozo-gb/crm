@@ -1,0 +1,62 @@
+<div id="projectModal"
+     aria-hidden="true"
+     aria-labelledby="projectModalLabel"
+     role="dialog"
+     tabindex="-1"
+     class="modal fade">
+  <div class="modal-dialog">
+  <form>
+    <div class="modal-content">
+      <div class="modal-header"
+           style="background: #3f51b5">
+        <button type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-hidden="true">
+                &times;
+        </button>
+        <h4 class="modal-title">Add new project</h4>
+      </div>
+      <div class="modal-body">
+        <p>Please enter the details of the new project below:</p>
+        <input id="project_name"
+               type="text"
+               placeholder="Project name"
+               autocomplete="off"
+               class="form-control placeholder-no-fix">
+        <br>
+        <div class="form-group">
+        <label for="sel1">Select project status:</label>
+         <select class="form-control" id="project_status">
+           <option>Active</option>
+           <option>Inactive</option>
+           <option>Complete</option>
+         </select>
+        </div>
+        <br>
+        <div class="form-group">
+        <label for="sel1">Assign to:</label>
+         <select class="form-control" id="client">
+           {% for client in clients %}
+             <option value="{{client.id}}">{{client.name}}</option>
+           {% endfor %}
+         </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal"
+                class="btn btn-default"
+                type="button">
+              Cancel
+        </button>
+        <button id="btn-add-project"
+                data-dismiss="modal"
+                class="btn btn-theme"
+                type="button">
+              Submit
+        </button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
