@@ -54,9 +54,9 @@
                   <br>
                   <div class="form-group">
                   <label for="sel1">Assign to:</label>
-                   <select class="form-control" id="clients">
+                   <select class="form-control" id="client">
                      {% for client in clients %}
-                       <option>{{client}}</option>
+                       <option value="{{client.id}}">{{client.name}}</option>
                      {% endfor %}
                    </select>
                   </div>
@@ -93,7 +93,7 @@
           <tr>
             <td>{{ project.name }}</a></td>
             <td>{{ project.status }}</td>
-            <td>{{ project.assigned_to }}</td>
+            <td>{{ project.assigned_to.name }}</td>
             <td>
               <button class="btn btn-primary btn-xs">
                 <i class="fa fa-pencil"></i>

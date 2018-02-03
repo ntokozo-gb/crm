@@ -8,6 +8,7 @@ from django.views import View
 
 # Local
 from . import models
+from models import Project, Client
 
 
 class Clients(LoginRequiredMixin, View):
@@ -70,12 +71,14 @@ class AddProject(LoginRequiredMixin, View):
         data = request.POST
         project_name = data['name']
         project_status = data['status']
-        assigned_to = data['assigned_to']
+        client_id = data['assigned_to']
+        assigned_client = Client.objects.filter(id=data['assigned_to']).first()
 
-        models.Project.objects.create(
+        project = Project(
             name = project_name,
             status = project_status,
-            assigned_to = assigned_to
+            assigned_to = assigned_client
         )
+        project.save()
 
         return redirect(reverse('projects'))

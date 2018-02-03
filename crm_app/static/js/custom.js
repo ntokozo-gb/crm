@@ -3,7 +3,7 @@ $('document').ready(function(){
         var name = $('#client_name').val();
         var person = $('#contact_person').val();
         var number = $('#contact_number').val();
-        var data = {
+        var client_data = {
             'name': name,
             'contact_person': person,
             'contact_number': number,
@@ -13,7 +13,7 @@ $('document').ready(function(){
         $.ajax({
             url: '/add_client/',
             method: 'POST',
-            data: data,
+            data: client_data,
             async: false,
             success: function(resp){
                 window.location = '/clients/';
@@ -24,18 +24,18 @@ $('document').ready(function(){
     $('#btn-add-project').click(function() {
         var name = $('#project_name').val();
         var status = $('#project_status').val();
-        var assigned_to = $('#assigned_to').val();
-        var data = {
+        var client_id = $('#client').val();
+        var project_data = {
             'name': name,
             'status': status,
-            'assigned_to': assigned_to,
+            'assigned_to': client_id,
             'csrfmiddlewaretoken': getCookie('csrftoken'),
         };
 
         $.ajax({
             url: '/add_project/',
             method: 'POST',
-            data: data,
+            data: project_data,
             async: false,
             success: function(resp){
                 window.location = '/projects/';
