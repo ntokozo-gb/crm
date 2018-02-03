@@ -46,6 +46,10 @@ class AddClient(LoginRequiredMixin, View):
         return redirect(reverse('clients'))
 
 
+class EditClient(LoginRequiredMixin, View):
+    pass
+
+
 class Projects(LoginRequiredMixin, View):
     template_name = 'projects.html'
 
@@ -82,3 +86,19 @@ class AddProject(LoginRequiredMixin, View):
         project.save()
 
         return redirect(reverse('projects'))
+
+
+class EditProject(LoginRequiredMixin, View):
+    template_name = 'dialogs/edit_project.html'
+
+    def get(self, request, *args, **kwargs):
+        data = request.GET
+        project = Project.objects.filter(id=8).first()
+        clients = models.Client.objects.all()
+
+        context = {
+            'project': project,
+            'clients': clients
+        }
+
+        return render(request, self.template_name, context)

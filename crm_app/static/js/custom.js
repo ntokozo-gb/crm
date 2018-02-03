@@ -1,5 +1,5 @@
-$('document').ready(function(){
-    $('#btn-add-client').click(function() {
+$('document').ready(() => {
+    $('#btn-add-client').click(() => {
         var name = $('#client_name').val();
         var person = $('#contact_person').val();
         var number = $('#contact_number').val();
@@ -21,26 +21,64 @@ $('document').ready(function(){
         });
     });
 
-    $('#btn-add-project').click(function() {
-        var name = $('#project_name').val();
-        var status = $('#project_status').val();
-        var client_id = $('#client').val();
-        var project_data = {
-            'name': name,
-            'status': status,
-            'assigned_to': client_id,
-            'csrfmiddlewaretoken': getCookie('csrftoken'),
-        };
+    $('#btn-add-project').click(() => {
+      var name = $('#project_name').val();
+      var status = $('#project_status').val();
+      var client_id = $('#client').val();
+      var project_data = {
+          'name': name,
+          'status': status,
+          'assigned_to': client_id,
+          'csrfmiddlewaretoken': getCookie('csrftoken'),
+      };
 
-        $.ajax({
-            url: '/add_project/',
-            method: 'POST',
-            data: project_data,
-            async: false,
-            success: function(resp){
-                window.location = '/projects/';
-            }
-        });
+      $.ajax({
+          url: '/add_project/',
+          method: 'POST',
+          data: project_data,
+          async: false,
+          success: function(resp){
+              window.location = '/projects/';
+          }
+      });
+    });
+
+    $('#client-table tbody').on('click', 'tr', function() {
+      var id = $(this)[0].attributes[0].value;
+      var data = {
+        'id': id,
+        'csrfmiddlewaretoken': getCookie('csrftoken'),
+      };
+      var client;
+
+      $.ajax({
+        type: "GET",
+        url: '/edit_client/',
+        data: data,
+        async: false,
+        success: (data) => {
+          client = data;
+        }
+      });
+    });
+
+    $('#edit_project_name tbody').on('click', 'tr', function() {
+      var id = $(this)[0].attributes[0].value;
+      var data = {
+        'id': id,
+        'csrfmiddlewaretoken': getCookie('csrftoken'),
+      };
+      var client;
+
+      $.ajax({
+        type: "GET",
+        url: '/edit_project/',
+        data: data,
+        async: false,
+        success: (data) => {
+          client = data;
+        }
+      });
     });
 
     function getCookie(name) {
