@@ -118,6 +118,9 @@ def project_create(request):
         if form.is_valid():
             form.save()
             data['form_is_valid'] = True
+            projects = Project.objects.all()
+            template_name = 'projects/includes/partial_project_list.html'
+            data['html_project_list'] = render_to_string(template_name, {'projects': projects})
         else:
             data['form_id_valid'] = False
     else:

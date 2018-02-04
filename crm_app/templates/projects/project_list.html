@@ -27,32 +27,16 @@
               <th></th>
             </tr>
           </thead>
-          <tbody>
-          {% for project in projects %}
-          <tr value="{{ project.id }}">
-            <td>{{ project.name }}</a></td>
-            <td>{{ project.get_project_status_display }}</td>
-            <td>{{ project.assigned_to.name }}</td>
-            <td>
-              {% include 'dialogs/edit_project.html' %}
-              <a class="btn btn-primary btn-xs">
-                <i class="fa fa-pencil"></i>
-              </a>
-              <button class="btn btn-danger btn-xs">
-                <i class="fa fa-trash-o "></i>
-              </button>
-            </td>
-          </tr>
-         {% endfor %}
+        <tbody>
+            {% include 'projects/includes/partial_project_list.html' %}
         </tbody>
-          <!-- THE MODAL WE WILL BE USING -->
+        
         <div class="modal fade" id="modal-project">
           <div class="modal-dialog">
             <div class="modal-content">
             </div>
           </div>
         </div>
-        <!-- {% include 'projects/add_project.html' %} -->
       </table>
     </div>
   </div>
