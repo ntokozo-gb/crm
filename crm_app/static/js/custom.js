@@ -44,24 +44,24 @@ $('document').ready(() => {
       });
     });
 
-    $('#client-table tbody').on('click', 'tr', function() {
-      var id = $(this)[0].attributes[0].value;
-      var data = {
-        'id': id,
-        'csrfmiddlewaretoken': getCookie('csrftoken'),
-      };
-      var client;
+    // $('#client-table tbody').on('click', 'tr', function() {
+    //   var id = $(this)[0].attributes[0].value;
+    //   var data = {
+    //     'id': id,
+    //     'csrfmiddlewaretoken': getCookie('csrftoken'),
+    //   };
+    //   var client;
 
-      $.ajax({
-        type: "GET",
-        url: '/edit_client/',
-        data: data,
-        async: false,
-        success: (data) => {
-          client = data;
-        }
-      });
-    });
+    //   $.ajax({
+    //     type: "GET",
+    //     url: '/edit_client/',
+    //     data: data,
+    //     async: false,
+    //     success: (data) => {
+    //       client = data;
+    //     }
+    //   });
+    // });
 
     // $('#project-table tbody').on('click', 'tr', function() {
     //   var id = $(this)[0].attributes[0].value;

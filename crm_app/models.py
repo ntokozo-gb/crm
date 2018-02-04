@@ -10,7 +10,12 @@ class Client(models.Model):
     contact_number = models.CharField(max_length=60)
 
     def __str__(self):
-        return self.name
+      return self.name
+
+    def __iter__(self):
+      return [ self.name,
+               self.contact_person,
+               self.contact_number ] 
 
 
 class Project(models.Model):
@@ -27,9 +32,9 @@ class Project(models.Model):
     assigned_to = models.ForeignKey(Client, on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.name
+      return self.name
 
     def __iter__(self):
-        return [ self.name,
-                 self.project_status,
-                 self.assigned_to ] 
+      return [ self.name,
+               self.project_status,
+               self.assigned_to ] 

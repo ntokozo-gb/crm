@@ -145,6 +145,17 @@ def client_create(request):
   return save_client_form(request, form, template)
 
 
+def client_update(request, pk):
+  client = get_object_or_404(Client, pk=pk)
+  if request.method == 'POST':
+    form = ClientForm(request.POST, instance=client)
+  else:
+    form = ClientForm(instance=client)
+  
+  template = 'clients/includes/partial_client_update.html'
+  return save_client_form(request, form, template)
+
+
 def save_client_form(request, form, template_name):
   data = dict()
   if request.method == 'POST':

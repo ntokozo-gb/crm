@@ -38,8 +38,8 @@ $(function () {
   $('.js-create-client').click(loadForm);
   $('#modal-client').on('submit', '.js-client-create-form', makeHttp);
 
-  // $("#client-table").on("click", ".js-update-project", loadForm);
-  // $("#modal-client").on("submit", ".js-client-update-form", makeHttp);
+  $("#client-table").on("click", ".js-update-client", loadForm);
+  $("#modal-client").on("submit", ".js-client-update-form", makeHttp);
 
   // $("#client-table").on("click", ".js-delete-client", loadForm);
   // $("#modal-client").on("submit", ".js-client-delete-form", makeHttp);
