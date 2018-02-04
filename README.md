@@ -4,13 +4,13 @@
 # Install requirements
 -$ pip install -r requirements.txt
 
-# Creating a superuser
--$ python manage.py createsuperuser
-- This is the user you will use to login to the app
-
 # Make migrations and migrate
 -$ python manage.py makemigrations
 -$ python manage.py migrate
+
+# Creating a superuser
+-$ python manage.py createsuperuser
+- This is the user you will use to login to the app
 
 # Run the server
 -$ python manage.py runserver

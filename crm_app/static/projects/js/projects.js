@@ -1,14 +1,5 @@
 $(function () {
 
-  $('.js-create-project').click(loadForm);
-  $('#modal-project').on('submit', '.js-project-create-form', makeHttp);
-
-  $("#project-table").on("click", ".js-update-project", loadForm);
-  $("#modal-project").on("submit", ".js-project-update-form", makeHttp);
-
-  $("#project-table").on("click", ".js-delete-project", loadForm);
-  $("#modal-project").on("submit", ".js-project-delete-form", makeHttp);
-
   var loadForm = function () {
     var btn = $(this); 
     $.ajax({
@@ -43,5 +34,14 @@ $(function () {
     });
     return false;
   }
+
+  $('.js-create-project').click(loadForm);
+  $('#modal-project').on('submit', '.js-project-create-form', makeHttp);
+
+  $("#project-table").on("click", ".js-update-project", loadForm);
+  $("#modal-project").on("submit", ".js-project-update-form", makeHttp);
+
+  $("#project-table").on("click", ".js-delete-project", loadForm);
+  $("#modal-project").on("submit", ".js-project-delete-form", makeHttp);
   
 });
