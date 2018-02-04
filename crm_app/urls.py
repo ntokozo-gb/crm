@@ -16,7 +16,10 @@ urlpatterns = [
     url(r'^edit_client/$', views.EditClient.as_view(), name="edit_client"),
 
     url(r'^projects/$', views.project_list, name='project_list'),
-    url(r'^projects/create/$', views.project_create, name="project_create"),
+    url(r'^projects/create/$', views.project_create, name='project_create'),
+    url(r'^projects/(?P<pk>\d+)/update/$', views.project_update, name='project_update'),
+
+    # becoming obsolute; either way you never worked!
     url(r'^edit_project/$', views.EditProject.as_view(), name="edit_project"),
 
     url(r'^favicon.ico$',

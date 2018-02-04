@@ -63,24 +63,24 @@ $('document').ready(() => {
       });
     });
 
-    $('#project-table tbody').on('click', 'tr', function() {
-      var id = $(this)[0].attributes[0].value;
-      var data = {
-        'id': id,
-        'csrfmiddlewaretoken': getCookie('csrftoken'),
-      };
-      var client;
+    // $('#project-table tbody').on('click', 'tr', function() {
+    //   var id = $(this)[0].attributes[0].value;
+    //   var data = {
+    //     'id': id,
+    //     'csrfmiddlewaretoken': getCookie('csrftoken'),
+    //   };
+    //   var client;
 
-      $.ajax({
-        type: "GET",
-        url: '/edit_project/',
-        data: data,
-        dataType: 'json',
-        success: (response) => {
-          client = response;
-        }
-      });
-    });
+    //   $.ajax({
+    //     type: "GET",
+    //     url: '/edit_project/',
+    //     data: data,
+    //     dataType: 'json',
+    //     success: (response) => {
+    //       client = response;
+    //     }
+    //   });
+    // });
 
     function getCookie(name) {
       var cookieValue = null;

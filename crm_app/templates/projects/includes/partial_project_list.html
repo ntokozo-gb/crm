@@ -1,16 +1,17 @@
 {% for project in projects %}
-<tr value="{{ project.id }}">
-  <td>{{ project.name }}</a></td>
-  <td>{{ project.get_project_status_display }}</td>
-  <td>{{ project.assigned_to.name }}</td>
-  <td>
-    {% include 'dialogs/edit_project.html' %}
-    <a class="btn btn-primary btn-xs">
+  <tr value="{{ project.id }}">
+    <td>{{ project.name }}</a></td>
+    <td>{{ project.get_project_status_display }}</td>
+    <td>{{ project.assigned_to.name }}</td>
+    <td>
+    
+    <a class="btn btn-primary btn-xs js-update-project"
+      data-url="{% url 'project_update' project.id %}">
       <i class="fa fa-pencil"></i>
     </a>
     <button class="btn btn-danger btn-xs">
       <i class="fa fa-trash-o "></i>
     </button>
-  </td>
-</tr>
+    </td>
+  </tr>
 {% endfor %}

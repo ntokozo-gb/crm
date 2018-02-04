@@ -111,8 +111,28 @@ def project_list(request):
 
 
 def project_create(request):
-    data = dict()
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+    else:
+        form = ProjectForm()
 
+    template = 'projects/includes/partial_project_create.html'
+    return save_project_form(request, form, template)
+
+
+def project_update(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=project)
+    else:
+        form = ProjectForm(instance=project)
+    
+    template = 'projects/includes/partial_project_update.html'
+    return save_project_form(request, form, template)
+
+
+def save_project_form(request, form, template_name):
+    data = dict()
     if request.method == 'POST':
         form = ProjectForm(request.POST)
         if form.is_valid():
@@ -120,14 +140,14 @@ def project_create(request):
             data['form_is_valid'] = True
             projects = Project.objects.all()
             template_name = 'projects/includes/partial_project_list.html'
-            data['html_project_list'] = render_to_string(template_name, {'projects': projects})
+            data['html_project_list'] = render_to_string(
+                template_name, 
+                { 'projects': projects }
+            )
         else:
             data['form_id_valid'] = False
-    else:
-        form = ProjectForm()
     
     context = { 'form': form }
-    template = 'projects/includes/partial_project_create.html'
-    data['html_form'] = render_to_string(template, context, request=request,)
+    data['html_form'] = render_to_string(template_name, context, request=request)
 
     return JsonResponse(data)
