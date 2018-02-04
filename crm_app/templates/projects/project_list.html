@@ -11,17 +11,17 @@
           <i class="fa fa-angle-right"></i>
           Projects
         </h4>
-          <div style="font-size:2em; color:Tomato; margin-top: -7px;"
-               class="pull-right">
-              <a data-toggle="modal" href="projects#projectModal">
+        <div style="font-size:2em; color:Tomato; margin-top: -7px;"
+            class="pull-right">
+            <a class="btn btn-primary js-create-project">
                 <i class="fa fa-plus"></i>
-              </a>
-          </div>
-          {% include 'dialogs/add_project.html' %}
-          <hr>
+                Add project
+            </a>
+        </div>
+         <hr>
           <thead>
             <tr>
-              <th><i class="fa fa-tasks"></i> Project Name</th>
+              <th><i class="fa fa-tasks"></i> Project</th>
               <th><i class=" fa fa-flag"></i> Status</th>
               <th><i class="fa fa-user"></i> Assigned To</th>
               <th></th>
@@ -44,10 +44,15 @@
             </td>
           </tr>
          {% endfor %}
-         <tr>
-            <td colspan="7" class="text-center bg-warning">No project</td>
-         </tr>
         </tbody>
+          <!-- THE MODAL WE WILL BE USING -->
+        <div class="modal fade" id="modal-project">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+          </div>
+        </div>
+        <!-- {% include 'projects/add_project.html' %} -->
       </table>
     </div>
   </div>

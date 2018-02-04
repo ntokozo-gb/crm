@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^edit_client/$', views.EditClient.as_view(), name="edit_client"),
 
     url(r'^projects/$', views.project_list, name='project_list'),
-    url(r'^add_project/$', views.AddProject.as_view(), name="add_project"),
+    url(r'^projects/create/$', views.project_create, name="project_create"),
     url(r'^edit_project/$', views.EditProject.as_view(), name="edit_project"),
 
     url(r'^favicon.ico$',

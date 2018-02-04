@@ -8,9 +8,11 @@ from django.views import View
 from django.http import JsonResponse
 from django.core import serializers
 from django.shortcuts import get_object_or_404
+from django.template.loader import render_to_string
 
 # Local
 from .models import Project, Client
+from .forms import ProjectForm
 
 
 class Clients(LoginRequiredMixin, View):
@@ -106,3 +108,23 @@ def project_list(request):
     context = { 'projects': projects }
 
     return render(request, template_name, context)
+
+
+def project_create(request):
+    data = dict()
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            data['form_is_valid'] = True
+        else:
+            data['form_id_valid'] = False
+    else:
+        form = ProjectForm()
+    
+    context = { 'form': form }
+    template = 'projects/includes/partial_project_create.html'
+    data['html_form'] = render_to_string(template, context, request=request,)
+
+    return JsonResponse(data)

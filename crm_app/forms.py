@@ -7,6 +7,9 @@ from crispy_forms.helper import FormHelper, Layout
 from crispy_forms.layout import Submit, HTML, Div, Field
 from crispy_forms.bootstrap import FormActions
 
+# Local
+from .models import Project
+
 
 class LoginForm(AuthenticationForm):
     helper = FormHelper()
@@ -33,3 +36,9 @@ class LoginForm(AuthenticationForm):
             css_class='login-wrap'
         ),
     )
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ('name', 'status', 'assigned_to')

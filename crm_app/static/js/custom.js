@@ -1,4 +1,5 @@
 $('document').ready(() => {
+
     $('#btn-add-client').click(() => {
         var name = $('#client_name').val();
         var person = $('#contact_person').val();
