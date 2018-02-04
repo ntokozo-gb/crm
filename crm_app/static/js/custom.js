@@ -62,7 +62,7 @@ $('document').ready(() => {
       });
     });
 
-    $('#edit_project_name tbody').on('click', 'tr', function() {
+    $('#project-table tbody').on('click', 'tr', function() {
       var id = $(this)[0].attributes[0].value;
       var data = {
         'id': id,
@@ -74,9 +74,9 @@ $('document').ready(() => {
         type: "GET",
         url: '/edit_project/',
         data: data,
-        async: false,
-        success: (data) => {
-          client = data;
+        dataType: 'json',
+        success: (response) => {
+          client = response;
         }
       });
     });

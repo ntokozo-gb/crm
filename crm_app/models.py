@@ -17,3 +17,8 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+
+    def __iter__(self):
+        return [ self.name,
+                 self.status,
+                 self.assigned_to] 

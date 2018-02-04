@@ -18,7 +18,7 @@
         <h4 class="modal-title">Edit project</h4>
       </div>
       <div class="modal-body">
-        <input id="edit_project_name"
+        <input id="edit-project-name"
                type="text"
                class="form-control"
                value="{{ project.name }}">
@@ -33,7 +33,7 @@
         </div>
         <br>
         <div class="form-group">
-        <label for="sel1">Assign to:</label>
+        <label for="sel">Assign to:</label>
          <select class="form-control" id="client">
            {% for client in clients %}
              <option value="{{ client.id }}">{{ client.name }}</option>

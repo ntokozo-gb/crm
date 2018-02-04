@@ -5,6 +5,9 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
+from django.http import JsonResponse
+from django.core import serializers
+from django.shortcuts import get_object_or_404
 
 # Local
 from . import models
@@ -89,16 +92,10 @@ class AddProject(LoginRequiredMixin, View):
 
 
 class EditProject(LoginRequiredMixin, View):
-    template_name = 'dialogs/edit_project.html'
 
     def get(self, request, *args, **kwargs):
         data = request.GET
-        project = Project.objects.filter(id=8).first()
-        clients = models.Client.objects.all()
+        project = Project.objects.filter(id=data['id'])
+        project_serialized = serializers.serialize('json', project)
 
-        context = {
-            'project': project,
-            'clients': clients
-        }
-
-        return render(request, self.template_name, context)
+        return JsonResponse(project_serialized, safe = False)
