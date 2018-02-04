@@ -14,16 +14,16 @@ class Client(models.Model):
 
 
 class Project(models.Model):
-    ACTIVE = 1
-    INACTIVE = 2
-    COMPLETE = 3
+    ACTIVE = 0
+    INACTIVE = 1
+    COMPLETE = 2
     PROJECT_STATUSES = (
         (ACTIVE, 'Active'),
         (INACTIVE, 'Inactive'),
         (COMPLETE, 'Complete'),
     )
     name = models.CharField(max_length=60)
-    status = models.PositiveSmallIntegerField(choices = PROJECT_STATUSES)
+    project_status = models.PositiveSmallIntegerField(choices = PROJECT_STATUSES)
     assigned_to = models.ForeignKey(Client, on_delete = models.CASCADE)
 
     def __str__(self):
@@ -31,5 +31,5 @@ class Project(models.Model):
 
     def __iter__(self):
         return [ self.name,
-                 self.status,
+                 self.project_status,
                  self.assigned_to ] 

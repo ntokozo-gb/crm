@@ -1,5 +1,14 @@
 $(function () {
 
+  $('.js-create-project').click(loadForm);
+  $('#modal-project').on('submit', '.js-project-create-form', makeHttp);
+
+  $("#project-table").on("click", ".js-update-project", loadForm);
+  $("#modal-project").on("submit", ".js-project-update-form", makeHttp);
+
+  $("#project-table").on("click", ".js-delete-project", loadForm);
+  $("#modal-project").on("submit", ".js-project-delete-form", makeHttp);
+
   var loadForm = function () {
     var btn = $(this); 
     $.ajax({
@@ -7,15 +16,15 @@ $(function () {
       type: 'get',
       dataType: 'json',
       beforeSend: function () {
-          $('#modal-project').modal('show');
+        $('#modal-project').modal('show');
       },
       success: function (data) {
-          $('#modal-project .modal-content').html(data.html_form);
+        $('#modal-project .modal-content').html(data.html_form);
       }
     });
   };
 
-  var saveForm = function() {
+  var makeHttp = function() {
     var form = $(this);
     $.ajax({
       url: form.attr('action'),
@@ -34,11 +43,5 @@ $(function () {
     });
     return false;
   }
-
-  $('.js-create-project').click(loadForm);
-  $('#modal-project').on('submit', '.js-project-create-form', saveForm);
-
-  $("#project-table").on("click", ".js-update-project", loadForm);
-  $("#modal-project").on("submit", ".js-project-update-form", saveForm);
   
 });
