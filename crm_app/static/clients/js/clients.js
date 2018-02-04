@@ -24,11 +24,11 @@ $(function () {
       dataType: 'json',
       success: function (data) {
         if (data.form_is_valid) {
-          $("#project-table tbody").html(data.html_client_list);
+          $("#client-table tbody").html(data.html_client_list);
           $("#modal-client").modal("hide");
         }
         else {
-          $('#modal-project .modal-content').html(data.html_form);
+          $('#modal-client .modal-content').html(data.html_form);
         }
       }
     });
@@ -41,7 +41,7 @@ $(function () {
   $("#client-table").on("click", ".js-update-client", loadForm);
   $("#modal-client").on("submit", ".js-client-update-form", makeHttp);
 
-  // $("#client-table").on("click", ".js-delete-client", loadForm);
-  // $("#modal-client").on("submit", ".js-client-delete-form", makeHttp);
+  $("#client-table").on("click", ".js-delete-client", loadForm);
+  $("#modal-client").on("submit", ".js-client-delete-form", makeHttp);
   
 });

@@ -15,14 +15,6 @@ from .models import Project, Client
 from .forms import ProjectForm, ClientForm
 
 
-def client_update(request):
-  pass
-
-
-def client_delete(request):
-  pass
-
-
 class Clients(LoginRequiredMixin, View):
   template_name = 'clients.html'
 
@@ -175,4 +167,22 @@ def save_client_form(request, form, template_name):
   context = { 'form': form }
   data['html_form'] = render_to_string(template_name, context, request=request)
 
+  return JsonResponse(data)
+
+
+def client_delete(request, pk):
+  data = dict()
+  client = get_object_or_404(Client, pk=pk)
+
+  if request.method == 'POST':
+    client.delete()
+    data['form_is_valid'] = True
+    clients = Client.objects.all()
+    template = 'clients/includes/partial_client_list.html'
+    data['html_client_list'] = render_to_string(template, {'clients': clients})
+  else:
+    context = {'client': client}
+    template_delete = 'clients/includes/partial_client_delete.html'
+    data['html_form'] = render_to_string(template_delete, context, request=request)
+  
   return JsonResponse(data)
