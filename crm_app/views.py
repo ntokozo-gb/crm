@@ -12,19 +12,7 @@ from django.template.loader import render_to_string
 
 # Local
 from .models import Project, Client
-from .forms import ProjectForm
-
-
-def client_list(request):
-  template_name = 'clients/client_list.html'
-  clients = Client.objects.all()
-  context = { 'clients': clients }
-
-  return render(request, template_name, context)
-
-
-def client_create(request):
-  pass
+from .forms import ProjectForm, ClientForm
 
 
 def client_update(request):
@@ -137,4 +125,45 @@ def project_delete(request, pk):
     template_delete = 'projects/includes/partial_project_delete.html'
     data['html_form'] = render_to_string(template_delete, context, request=request)
   
+  return JsonResponse(data)
+
+
+def client_list(request):
+  template_name = 'clients/client_list.html'
+  clients = Client.objects.all()
+  context = { 'clients': clients }
+
+  return render(request, template_name, context)
+
+
+def client_create(request):
+  if request.method == 'POST':
+    form = ClientForm(request.POST)
+  else:
+    form = ClientForm()
+
+  template = 'clients/includes/partial_client_create.html'
+  return save_client_form(request, form, template)
+
+
+def save_client_form(request, form, template_name):
+  data = dict()
+  if request.method == 'POST':
+    form = ClientForm(request.POST)
+    if form.is_valid():
+      form.save()
+      form.objects.filter
+      data['form_is_valid'] = True
+      clients = Client.objects.all()
+      template_name = 'projects/includes/partial_project_list.html'
+      data['html_project_list'] = render_to_string(
+          template_name, 
+          { 'clients': clients }
+      )
+    else:
+      data['form_id_valid'] = False
+
+  context = { 'form': form }
+  data['html_form'] = render_to_string(template_name, context, request=request)
+
   return JsonResponse(data)
