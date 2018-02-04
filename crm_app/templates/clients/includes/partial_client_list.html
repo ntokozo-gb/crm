@@ -1,0 +1,17 @@
+{% for client in clients %}
+  <tr value="{{ project.id }}">
+    <td>{{ client.name }}</a></td>
+    <td>{{ client.contact_person }}</td>
+    <td>{{ client.contact_number }}</td>
+    <td>
+      <a class="btn btn-primary btn-xs js-update-client"
+        data-url="{% url 'client_update' client.id %}">
+        <i class="fa fa-pencil"></i>
+      </a>
+      <a class="btn btn-danger btn-xs js-update-client"
+        data-url="{% url 'client_delete' client.id %}">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </td>
+  </tr>
+{% endfor %}

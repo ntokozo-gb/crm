@@ -11,9 +11,10 @@ urlpatterns = [
             form_class=forms.LoginForm
         ), name='signup'),
 
-    url(r'^clients/$', views.Clients.as_view(), name="clients"),
-    url(r'^add_client/$', views.AddClient.as_view(), name="add_client"),
-    url(r'^edit_client/$', views.EditClient.as_view(), name="edit_client"),
+    url(r'^clients/$', views.client_list, name="client_list"),
+    url(r'^clients/create/$', views.client_create, name="client_create"),
+    url(r'^clients/(?P<pk>\d+)/update/$', views.client_update, name="client_update"),
+    url(r'^clients/(?P<pk>\d+)/delete/$', views.client_delete, name='client_delete'),
 
     url(r'^projects/$', views.project_list, name='project_list'),
     url(r'^projects/create/$', views.project_create, name='project_create'),

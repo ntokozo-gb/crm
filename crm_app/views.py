@@ -15,6 +15,26 @@ from .models import Project, Client
 from .forms import ProjectForm
 
 
+def client_list(request):
+  template_name = 'clients/client_list.html'
+  clients = Client.objects.all()
+  context = { 'clients': clients }
+
+  return render(request, template_name, context)
+
+
+def client_create(request):
+  pass
+
+
+def client_update(request):
+  pass
+
+
+def client_delete(request):
+  pass
+
+
 class Clients(LoginRequiredMixin, View):
   template_name = 'clients.html'
 
@@ -48,44 +68,6 @@ class AddClient(LoginRequiredMixin, View):
     )
 
     return redirect(reverse('clients'))
-
-
-class EditClient(LoginRequiredMixin, View):
-  pass
-
-
-class AddProject(LoginRequiredMixin, View):
-  template_name = 'projects.html'
-
-  def get(self, request, *args, **kwargs):
-    return render(request, self.template_name)
-
-
-  def post(self, request, *args, **kwargs):
-    data = request.POST
-    project_name = data['name']
-    project_status = data['status']
-    client_id = data['assigned_to']
-    assigned_client = Client.objects.filter(id=client_id).first()
-
-    project = Project(
-        name = project_name,
-        status = project_status,
-        assigned_to = assigned_client
-    )
-    project.save()
-
-    return redirect(reverse('projects'))
-
-
-class EditProject(LoginRequiredMixin, View):
-
-  def get(self, request, *args, **kwargs):
-    data = request.GET
-    project = Project.objects.filter(id=data['id'])
-    project_serialized = serializers.serialize('json', project)
-
-    return JsonResponse(project_serialized, safe = False)
 
 
 def project_list(request):
