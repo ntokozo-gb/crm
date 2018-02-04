@@ -31,7 +31,7 @@
           {% for project in projects %}
           <tr value="{{ project.id }}">
             <td>{{ project.name }}</a></td>
-            <td>{{ project.status }}</td>
+            <td>{{ project.get_project_status_display }}</td>
             <td>{{ project.assigned_to.name }}</td>
             <td>
               {% include 'dialogs/edit_project.html' %}
@@ -44,6 +44,9 @@
             </td>
           </tr>
          {% endfor %}
+         <tr>
+            <td colspan="7" class="text-center bg-warning">No project</td>
+         </tr>
         </tbody>
       </table>
     </div>

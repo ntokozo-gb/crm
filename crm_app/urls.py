@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^add_client/$', views.AddClient.as_view(), name="add_client"),
     url(r'^edit_client/$', views.EditClient.as_view(), name="edit_client"),
 
-    url(r'^projects/$', views.Projects.as_view(), name="projects"),
+    url(r'^projects/$', views.project_list, name='project_list'),
     url(r'^add_project/$', views.AddProject.as_view(), name="add_project"),
     url(r'^edit_project/$', views.EditProject.as_view(), name="edit_project"),
 

@@ -10,15 +10,14 @@ from django.core import serializers
 from django.shortcuts import get_object_or_404
 
 # Local
-from . import models
-from models import Project, Client
+from .models import Project, Client
 
 
 class Clients(LoginRequiredMixin, View):
     template_name = 'clients.html'
 
     def get(self, request, *args, **kwargs):
-        clients = models.Client.objects.all()
+        clients = Client.objects.all()
 
         context = {
             'clients': clients,
@@ -40,7 +39,7 @@ class AddClient(LoginRequiredMixin, View):
         contact_person = data['contact_person']
         contact_number = data['contact_number']
 
-        models.Client.objects.create(
+        Client.objects.create(
             name = name,
             contact_person = contact_person,
             contact_number = contact_number,
@@ -53,18 +52,18 @@ class EditClient(LoginRequiredMixin, View):
     pass
 
 
-class Projects(LoginRequiredMixin, View):
-    template_name = 'projects.html'
+# class Projects(LoginRequiredMixin, View):
+#     template_name = 'projects.html'
 
-    def get(self, request, *args, **kwargs):
-        projects = models.Project.objects.all()
-        clients = models.Client.objects.all()
+#     def get(self, request, *args, **kwargs):
+#         projects = Project.objects.all()
+#         clients = Client.objects.all()
 
-        context = {
-            'projects': projects,
-            'clients': clients,
-        }
-        return render(request, self.template_name, context)
+#         context = {
+#             'projects': projects,
+#             'clients': clients,
+#         }
+#         return render(request, self.template_name, context)
 
 
 class AddProject(LoginRequiredMixin, View):
@@ -79,7 +78,7 @@ class AddProject(LoginRequiredMixin, View):
         project_name = data['name']
         project_status = data['status']
         client_id = data['assigned_to']
-        assigned_client = Client.objects.filter(id=data['assigned_to']).first()
+        assigned_client = Client.objects.filter(id=client_id).first()
 
         project = Project(
             name = project_name,
@@ -99,3 +98,11 @@ class EditProject(LoginRequiredMixin, View):
         project_serialized = serializers.serialize('json', project)
 
         return JsonResponse(project_serialized, safe = False)
+
+
+def project_list(request):
+    template_name = 'projects/project_list.html'
+    projects = Project.objects.all()
+    context = { 'projects': projects }
+
+    return render(request, template_name, context)
