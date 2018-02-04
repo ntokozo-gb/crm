@@ -37,3 +37,5 @@ db.sqlite3
 .DS_Store
 .AppleDouble
 .LSOverride
+
+\.vscode/\.ropeproject/
