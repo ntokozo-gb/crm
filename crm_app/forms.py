@@ -19,19 +19,19 @@ class LoginForm(AuthenticationForm):
     HTML('<h2 class="form-login-heading">login</h2>'),
     Div(
       Field(
-          'username',
-          placeholder="Username"
+        'username',
+        placeholder="Username"
       ),
       Field(
-          'password',
-          placeholder="Password"
+        'password',
+        placeholder="Password"
       ),
       FormActions(
-          Submit(
-              'login',
-              'Sign in',
-              css_class='btn btn-theme btn-block'
-          )
+        Submit(
+          'login',
+          'Sign in',
+          css_class='btn btn-theme btn-block'
+        )
       ),
       css_class='login-wrap'
     ),

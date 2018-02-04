@@ -93,7 +93,6 @@ def save_project_form(request, form, template_name):
     form = ProjectForm(request.POST)
     if form.is_valid():
       form.save()
-      form.objects.filter
       data['form_is_valid'] = True
       projects = Project.objects.all()
       template_name = 'projects/includes/partial_project_list.html'
@@ -152,11 +151,10 @@ def save_client_form(request, form, template_name):
     form = ClientForm(request.POST)
     if form.is_valid():
       form.save()
-      form.objects.filter
       data['form_is_valid'] = True
       clients = Client.objects.all()
-      template_name = 'projects/includes/partial_project_list.html'
-      data['html_project_list'] = render_to_string(
+      template_name = 'clients/includes/partial_client_list.html'
+      data['html_client_list'] = render_to_string(
           template_name, 
           { 'clients': clients }
       )
