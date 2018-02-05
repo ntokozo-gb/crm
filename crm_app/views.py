@@ -15,41 +15,6 @@ from .models import Project, Client
 from .forms import ProjectForm, ClientForm
 
 
-class Clients(LoginRequiredMixin, View):
-  template_name = 'clients.html'
-
-  def get(self, request, *args, **kwargs):
-    clients = Client.objects.all()
-
-    context = {
-      'clients': clients,
-    }
-
-    return render(request, self.template_name, context)
-
-
-class AddClient(LoginRequiredMixin, View):
-  template_name = 'clients.html'
-
-  def get(self, request, *args, **kwargs):
-    return render(request, self.template_name)
-
-
-  def post(self, request, *args, **kwargs):
-    data = request.POST
-    name = data['name']
-    contact_person = data['contact_person']
-    contact_number = data['contact_number']
-
-    Client.objects.create(
-        name = name,
-        contact_person = contact_person,
-        contact_number = contact_number,
-    )
-
-    return redirect(reverse('clients'))
-
-
 def project_list(request):
   template_name = 'projects/project_list.html'
   projects = Project.objects.all()
