@@ -43,7 +43,12 @@
       <!--logo end-->
       <div class="top-menu">
       	<ul class="nav pull-right top-menu">
-              <li><a class="logout" href="{% url 'logout' %}">Logout</a></li>
+          <li>
+            <a class="logout" 
+               href="{% url 'logout' %}">
+              Logout
+            </a>
+          </li>
       	</ul>
       </div>
       </header>
@@ -54,27 +59,27 @@
         <div id="sidebar"  class="nav-collapse ">
           <!-- sidebar menu start-->
           <ul class="sidebar-menu"
-              id="nav-accordion">
-              <p class="centered">
-                <a href="">
-                  <img src="{% static 'assets/img/ntokozo.png' %}"
-                       class="img-circle"
-                       width="60">
-                </a>
-              </p>
-              <h5 class="centered">Admin: {{user.username}}</h5>
-              <li class="mt">
-                  <a href="{% url 'client_list' %}">
-                      <i class="fa fa-users"></i>
-                      <span>Clients</span>
-                  </a>
-              </li>
-              <li class="mt">
-                  <a href="{% url 'project_list' %}">
-                      <i class="fa fa-tasks"></i>
-                      <span>Projects</span>
-                  </a>
-              </li>
+            id="nav-accordion">
+            <p class="centered">
+              <a href="">
+                <img src="{% static 'assets/img/ntokozo.png' %}"
+                      class="img-circle"
+                      width="60">
+              </a>
+            </p>
+            <h5 class="centered">Admin: {{user.username}}</h5>
+            <li class="mt">
+              <a href="{% url 'client_list' %}">
+                <i class="fa fa-users"></i>
+                <span>Clients</span>
+              </a>
+            </li>
+            <li class="mt">
+              <a href="{% url 'project_list' %}">
+                <i class="fa fa-tasks"></i>
+                <span>Projects</span>
+              </a>
+            </li>
           </ul>
           <!-- sidebar menu end-->
         </div>
@@ -84,13 +89,13 @@
       <!--main content start-->
       <section id="main-content">
         <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i>Dashboard</h3>
-          	<div class="row mt">
-          		<div class="col-lg-12">
-                {% block content %}
-                {% endblock %}
-          		</div>
-          	</div>
+          <h3><i class="fa fa-angle-right"></i>Dashboard</h3>
+          <div class="row mt">
+            <div class="col-lg-12">
+              {% block content %}
+              {% endblock %}
+            </div>
+          </div>
     		</section>
       </section>
       <!--main content end-->

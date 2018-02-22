@@ -58,7 +58,7 @@ def save_project_form(request, form, template_name):
           { 'projects': projects }
       )
     else:
-      data['form_id_valid'] = False
+      data['form_is_valid'] = False
 
   context = { 'form': form }
   data['html_form'] = render_to_string(template_name, context, request=request)
